@@ -21,7 +21,7 @@ first_char=$(echo "${plugin_name_sanitized:0:1}" | tr '[:lower:]' '[:upper:]')
 rest_of_name="${plugin_name_sanitized:1}"
 default_main_class="${first_char}${rest_of_name}Plugin"
 
-prompt "バージョン (例: 1.0.0)" version
+prompt "バージョン (例: 1.0.0)" version "1.0.0"
 prompt "APIバージョン (デフォルト: 5.0.0)" api_version "5.0.0"
 prompt "作者" author
 prompt "説明" description

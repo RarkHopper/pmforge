@@ -1,7 +1,8 @@
-.PHONY: init-plugin clean analyse fix check
+.PHONY: init-plugin clean analyse fix check build
 
 init-plugin:
 	- @make clean
+	- chmod +x ./scripts/init-plugin.sh
 	- bash ./scripts/init-plugin.sh
 
 clean:
@@ -16,3 +17,7 @@ fix:
 
 check:
 	- ./vendor/bin/php-cs-fixer fix --dry-run --diff
+
+build:
+	- chmod +x ./scripts/build-phar.sh
+	- ./scripts/build-phar.sh
