@@ -1,4 +1,7 @@
 {
+  "intelephense.environment.includePaths": [
+    "/opt/pmmp-php/bin/php7"
+  ],
   "intelephense.stubs": [
     "apache",
     "bcmath",

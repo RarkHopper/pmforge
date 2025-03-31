@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     vim \
     jq \
+    libxml2-dev \
+    libzip-dev \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
@@ -28,15 +30,20 @@ RUN mkdir -p ${PMMP_PHP_DIR} && \
     tar -xzf /tmp/php.tar.gz -C ${PMMP_PHP_DIR} && \
     rm /tmp/php.tar.gz
 
+# opcache.so のフルパスに書き換える
+RUN OPCACHE_SO=$(find ${PMMP_PHP_DIR} -name opcache.so 2>/dev/null || true) && \
+    if [ -f "$OPCACHE_SO" ]; then \
+        sed -i "s|^zend_extension=opcache.so|zend_extension=${OPCACHE_SO}|" ${PMMP_PHP_BIN}/bin/php.ini; \
+    fi
+
+# xdebug.so のフルパスに書き換える
+RUN XDEBUG_SO=$(find ${PMMP_PHP_DIR} -name xdebug.so) && \
+    if [ -f "$XDEBUG_SO" ]; then \
+        sed -i "s|^;zend_extension=xdebug.so|zend_extension=${XDEBUG_SO}|" ${PMMP_PHP_BIN}/bin/php.ini; \
+    fi
+
 # Composerインストール
 COPY --from=composer:2.8.4 /usr/bin/composer /usr/bin/composer
-
-# Install additional tools and libraries that might be needed by phpstan and php-cs-fixer
-RUN apt-get update && apt-get install -y \
-    libxml2-dev \
-    libzip-dev \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN pip install pre-commit
 
