@@ -68,7 +68,7 @@ RUN apt-get update -y && apt-get install -y \
 
 # PMMPのインストール
 COPY --from=pmmp /pmmp/ /pmmp/
-COPY --from=pmmp-php /php/ /opt/pmmp-php/
+COPY --from=pmmp-php /opt/pmmp-php/ /opt/pmmp-php/
 
 RUN chown -R vscode:vscode /pmmp
 
