@@ -12,7 +12,9 @@
         "mehedidracula.php-namespace-resolver",
         "EditorConfig.EditorConfig",
         "neilbrayfield.php-docblocker",
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        "GitHub.copilot-chat",
+        "GitHub.copilot"
       ]
     }
   }

@@ -1,0 +1,6 @@
+name: Example
+version: 
+api: 5.0.0
+author: RarkHopper
+description: 
+main: rarkhopper\example\ExamplePlugin
