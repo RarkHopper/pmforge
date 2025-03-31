@@ -52,11 +52,11 @@ make check
 # プラグインのPHARをビルド
 make build
 
-# ビルドしたプラグインをPMMPサーバーに配置
-make deploy
-
 # PMMPサーバーを起動
 make run
+
+# ビルドしたプラグインをPMMPサーバーに配置
+make deploy
 ```
 
 ### プロジェクトのクリーンアップ
