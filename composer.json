@@ -1,6 +1,7 @@
 {
   "name": "rarkhopper/example",
   "version": "1.0.0",
+  "type": "project",
   "require": {},
   "require-dev": {
     "pocketmine/pocketmine-mp": "^5.0.0",
