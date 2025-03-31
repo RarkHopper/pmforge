@@ -1,0 +1,8 @@
+services:
+  pmforge:
+    build: .
+    volumes:
+      - ..:/pmforge
+      - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
+    tty: true
+    network_mode: host

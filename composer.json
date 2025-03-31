@@ -1,0 +1,13 @@
+{
+    "name": "vscode/pmforge",
+    "version": "1.0.0",
+    "require": {},
+    "require-dev": {
+      "pocketmine/pocketmine-mp": "^5.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vscode\\Pmforge\\": "src/"
+        }
+    }
+}

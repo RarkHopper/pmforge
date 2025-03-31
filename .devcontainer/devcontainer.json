@@ -1,0 +1,19 @@
+{
+  "name": "PMForge Devcontainer",
+  "dockerComposeFile": "compose.yaml",
+  "service": "pmforge",
+  "workspaceFolder": "/pmforge",
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "mehedidracula.php-namespace-resolver",
+        "EditorConfig.EditorConfig",
+        "neilbrayfield.php-docblocker",
+        "ms-vscode.makefile-tools"
+      ]
+    }
+  }
+}
