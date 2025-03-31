@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "require": {},
   "require-dev": {
-    "pocketmine/pocketmine-mp": "^5.0.0"
+    "pocketmine/pocketmine-mp": "^5.0.0",
+    "phpstan/phpstan": "^1.10",
+    "friendsofphp/php-cs-fixer": "^3.34"
   },
   "autoload": {
     "psr-4": {
       "rarkhopper\\example\\": "src/rarkhopper/example"
     }
+  },
+  "scripts": {
+    "analyse": "phpstan analyse",
+    "fix": "php-cs-fixer fix",
+    "check": "php-cs-fixer fix --dry-run --diff"
   }
 }

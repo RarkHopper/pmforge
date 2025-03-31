@@ -29,4 +29,11 @@ RUN mkdir -p ${PMMP_PHP_DIR} && \
 # Composerインストール
 COPY --from=composer:2.8.4 /usr/bin/composer /usr/bin/composer
 
+# Install additional tools and libraries that might be needed by phpstan and php-cs-fixer
+RUN apt-get update && apt-get install -y \
+    libxml2-dev \
+    libzip-dev \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
 ENV PATH="${PMMP_PHP_BIN}/bin:${PATH}"
