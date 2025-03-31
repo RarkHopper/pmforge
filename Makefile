@@ -23,6 +23,8 @@ build:
 	- ./scripts/build-phar.sh
 
 run:
+	- @-fuser -k 19132/udp || true
+	- @rm -f /pmmp/server.lock
 	- cd /pmmp && bash /pmmp/start.sh
 
 deploy:
