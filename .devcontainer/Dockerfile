@@ -11,6 +11,8 @@ ENV PMMP_PHP_BIN=${PMMP_PHP_DIR}/bin/php7
 
 # 必要なパッケージ
 RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
     git \
     unzip \
     curl \
@@ -35,5 +37,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pip install pre-commit
 
 ENV PATH="${PMMP_PHP_BIN}/bin:${PATH}"

@@ -4,7 +4,12 @@ set -e
 echo "Add command aliases to .bashrc..."
 bash .devcontainer/register-aliases.sh
 
-echo "Install composer dependencies..."
-composer install --no-interaction --prefer-dist
+# Install pre-commit hooks
+pre-commit install
 
-echo "Post-creation setup completed successfully."
+# Composer setup (if you have a composer.json)
+if [ -f "composer.json" ]; then
+    composer install
+fi
+
+echo "DevContainer setup complete!"
