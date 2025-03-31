@@ -12,7 +12,8 @@
         "neilbrayfield.php-docblocker",
         "ms-vscode.makefile-tools",
         "GitHub.copilot-chat",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "bmewburn.vscode-intelephense-client"
       ]
     }
   }
