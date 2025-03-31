@@ -8,13 +8,12 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "mehedidracula.php-namespace-resolver",
         "EditorConfig.EditorConfig",
         "neilbrayfield.php-docblocker",
         "ms-vscode.makefile-tools",
         "GitHub.copilot-chat",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "bmewburn.vscode-intelephense-client"
       ]
     }
   }

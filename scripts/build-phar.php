@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * @return array<string, string>
+ */
 function parsePluginYml(): array {
     if (!file_exists("plugin.yml")) {
         exit("Error: plugin.yml not found. Run this script from the plugin root directory.\n");
