@@ -12,4 +12,7 @@ if [ -f "composer.json" ]; then
     composer install
 fi
 
+# PHP Intelephense setup
+code --install-extension bmewburn.vscode-intelephense-client --force
+
 echo "DevContainer setup complete!"

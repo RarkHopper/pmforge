@@ -1,4 +1,5 @@
 {
+  "intelephense.environment.phpVersion": "8.3",
   "intelephense.environment.includePaths": [
     "/opt/pmmp-php/bin/php7"
   ],
