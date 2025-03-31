@@ -70,6 +70,8 @@ RUN apt-get update -y && apt-get install -y \
 COPY --from=pmmp /pmmp/ /pmmp/
 COPY --from=pmmp-php /php/ /opt/pmmp-php/
 
+RUN chown -R vscode:vscode /pmmp
+
 # Composerインストール
 COPY --from=composer:2.8.4 /usr/bin/composer /usr/bin/composer
 
