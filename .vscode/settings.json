@@ -1,0 +1,19 @@
+{
+  "intelephense.stubs": [
+    "Core",
+    "standard",
+    "date",
+    "pcre",
+    "SPL",
+    "hash",
+    "json",
+    "ctype",
+    "Phar",
+    "zlib",
+    "SimpleXML",
+    "Reflection",
+    "openssl",
+    "yaml",
+    "xml"
+  ]
+}
