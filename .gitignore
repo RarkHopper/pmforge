@@ -1,6 +1,6 @@
 .env*
 !.env.example
 vendor/
-build/
+builds/
 
 .php-cs-fixer.cache

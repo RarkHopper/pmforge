@@ -1,4 +1,4 @@
-.PHONY: init-plugin clean analyse fix check build
+.PHONY: init-plugin clean analyse fix check build run
 
 init-plugin:
 	- @make clean
@@ -21,3 +21,9 @@ check:
 build:
 	- chmod +x ./scripts/build-phar.sh
 	- ./scripts/build-phar.sh
+
+run:
+	- cd /pmmp && bash /pmmp/start.sh
+
+deploy:
+	- cp -r builds/* /pmmp/plugins/

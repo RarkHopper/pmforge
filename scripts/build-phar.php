@@ -26,7 +26,7 @@ function createPhar(string $name, string $version): void {
     $pharName = strtolower(preg_replace('/[^A-Za-z0-9_-]/', '', str_replace(' ', '-', $name)));
 
     // buildディレクトリを作成 (存在しない場合)
-    $buildDir = "build";
+    $buildDir = "builds";
     if (!is_dir($buildDir)) {
         if (!mkdir($buildDir, 0755, true)) {
             exit("Error: Failed to create build directory\n");
