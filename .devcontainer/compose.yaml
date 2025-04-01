@@ -3,7 +3,7 @@ services:
     build: .
     volumes:
       - ..:/pmforge
-      - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
+      - /mnt/c:/mnt/c  # wsl only
+      - ~/.gitconfig:/home/vscode/.gitconfig:ro
     tty: true
-    ports:
-      - "19132:19132/udp"
+    network_mode: host
