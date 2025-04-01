@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -19,6 +20,31 @@ function parsePluginYml(): array {
     }
 
     return $pluginYml;
+}
+
+/**
+ * Add files from a directory to the phar recursively
+ */
+function addDirectoryToPhar(Phar $phar, string $directory): void {
+    if (!is_dir($directory)) {
+        return;
+    }
+
+    $directoryIterator = new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS);
+    $iterator = new RecursiveIteratorIterator($directoryIterator);
+
+    foreach ($iterator as $file) {
+        $filePath = $file->getPathname();
+        // Convert to relative path from current working directory
+        $relativePath = str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $filePath);
+        // Normalize path separators between Windows and Linux
+        $relativePath = str_replace('\\', '/', $relativePath);
+
+        if ($file->isFile()) {
+            echo "Adding file: {$relativePath}\n";
+            $phar->addFile($filePath, $relativePath);
+        }
+    }
 }
 
 function createPhar(string $name, string $version): void {
@@ -55,25 +81,20 @@ function createPhar(string $name, string $version): void {
         __HALT_COMPILER();"
     );
 
-    // Only include src directory and plugin.yml
+    // Add src directory if it exists
     if (is_dir("src")) {
-        $directory = new RecursiveDirectoryIterator("src", FilesystemIterator::SKIP_DOTS);
-        $iterator = new RecursiveIteratorIterator($directory);
-
-        foreach ($iterator as $file) {
-            $filePath = $file->getPathname();
-            // 現在の作業ディレクトリからの相対パスに変換
-            $relativePath = str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $filePath);
-            // WindowsとLinuxのパス区切り文字を統一
-            $relativePath = str_replace('\\', '/', $relativePath);
-
-            if ($file->isFile()) {
-                echo "Adding file: {$relativePath}\n";
-                $phar->addFile($filePath, $relativePath);
-            }
-        }
+        echo "Adding src directory...\n";
+        addDirectoryToPhar($phar, "src");
     } else {
         echo "Warning: src directory not found\n";
+    }
+
+    // Add resources directory if it exists
+    if (is_dir("resources")) {
+        echo "Adding resources directory...\n";
+        addDirectoryToPhar($phar, "resources");
+    } else {
+        echo "Warning: resources directory not found\n";
     }
 
     // Add plugin.yml
