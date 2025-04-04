@@ -21,7 +21,22 @@ ifndef BASE_PATH
 $(error BASE_PATH が設定されていません。.env ファイルを確認してください)
 endif
 
-.PHONY: init-plugin clean analyse fix check build run pmmp-setup deploy redeploy
+.PHONY: help init-plugin clean analyse fix check build run pmmp-setup pmmp-purge deploy redeploy
+
+help:
+	@echo "使用可能なコマンド:"
+	@echo "  make help                - このヘルプメッセージを表示"
+	@echo "  make init-plugin         - 新しいプラグインを初期化"
+	@echo "  make clean               - ソースファイルとプラグイン設定を削除"
+	@echo "  make analyse             - PHPStanでコード解析を実行"
+	@echo "  make fix                 - PHP-CS-Fixerでコードスタイルを修正"
+	@echo "  make check               - コードスタイルをチェック（変更なし）"
+	@echo "  make build               - プラグインをPHARファイルにビルド"
+	@echo "  make pmmp-setup          - PMMPサーバー環境をセットアップ"
+	@echo "  make pmmp-purge          - PMMPディレクトリを完全に削除"
+	@echo "  make run                 - PMMPサーバーを起動"
+	@echo "  make deploy              - ビルドしたプラグインをPMMPディレクトリにデプロイ"
+	@echo "  make redeploy            - ビルドとデプロイを一度に実行"
 
 init-plugin:
 	- @make clean
