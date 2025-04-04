@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 /**
@@ -34,16 +33,20 @@ function addDirectoryToPhar(Phar $phar, string $directory): void {
     $iterator = new RecursiveIteratorIterator($directoryIterator);
 
     foreach ($iterator as $file) {
+        if (!$file->isFile()) {
+            continue;
+        }
+
         $filePath = $file->getPathname();
-        // Convert to relative path from current working directory
-        $relativePath = str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $filePath);
-        // Normalize path separators between Windows and Linux
+
+        $absoluteCurrentDir = realpath('.');
+        $absoluteFilePath = realpath($filePath);
+
+        $relativePath = substr($absoluteFilePath, strlen($absoluteCurrentDir) + 1);
         $relativePath = str_replace('\\', '/', $relativePath);
 
-        if ($file->isFile()) {
-            echo "Adding file: {$relativePath}\n";
-            $phar->addFile($filePath, $relativePath);
-        }
+        echo "Adding file: {$relativePath}\n";
+        $phar->addFile($filePath, $relativePath);
     }
 }
 
